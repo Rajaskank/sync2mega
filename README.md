@@ -1,1 +1,2 @@
-# Sync2Mega - Synchronize your files automatically to Mega
+# Sync2Mega
+Synchronize your files automatically to Mega
