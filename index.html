@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Sync2mega by Rajaskank</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/Rajaskank/sync2mega">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/Rajaskank/sync2mega/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/Rajaskank/sync2mega/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Sync2mega</h1>
+          <p>Synchronize your files automatically to Mega</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/Rajaskank">Rajaskank</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a id="sync2mega" class="anchor" href="#sync2mega" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sync2Mega</h1>
+
+<p>Synchronize your files automatically to Mega</p>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<ul>
+<li>Linux</li>
+<li>RSync</li>
+<li>Megatools</li>
+<li>Mega account</li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<pre><code>apt-get install rsync megatools
+</code></pre>
+
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h2>
+
+<p>Create .megarc with your Mega credentials:</p>
+
+<pre><code>[Login]
+Username = &lt;mailuseby@mega.co.nz&gt;
+Password = &lt;megapassword&gt;
+</code></pre>
+
+<p>Set permissions:</p>
+
+<pre><code>chmod 600 .megarc
+</code></pre>
+
+<p>Edit DATA and SQL as needed::</p>
+
+<pre><code># DATA
+echo "-&gt; Backup data in ${TEMPDIR}..."
+mkdir $TEMPDIR/apache2
+rsync $OPTS /etc/apache2/sites-available $TEMPDIR/apache2
+rsync $OPTS /var/www $TEMPDIR
+# END DATA
+# SQL
+echo "-&gt; Dump SQL databases in ${TEMPDIR}..."
+mkdir $TEMPDIR/mysql
+mysqldump -u&lt;SQL user&gt; -p&lt;SQL password&gt; &lt;SQL base&gt; | gzip &gt;$TEMPDIR/mysql/&lt;SQL base&gt;.gz
+#END SQL
+</code></pre>
+
+<p>Create a new entry to your crontab file:</p>
+
+<pre><code>crontab -e
+</code></pre>
+
+<p>And paste (every day at 6h):</p>
+
+<pre><code>0 6 * * * /path/to/sync2mega.sh
+</code></pre>
+
+<h2>
+<a id="source" class="anchor" href="#source" aria-hidden="true"><span class="octicon octicon-link"></span></a>Source</h2>
+
+<p>Backup2Mega: <a href="https://github.com/hardware/Backup2Mega">https://github.com/hardware/Backup2Mega</a></p>
+
+<p>Sysadmin and DBA tips: <a href="http://albertolarripa.com/2013/07/10/megatools-synchronizing-your-backups-to-mega/">http://albertolarripa.com/2013/07/10/megatools-synchronizing-your-backups-to-mega/</a></p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-41391177-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
