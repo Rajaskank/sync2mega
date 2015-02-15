@@ -34,7 +34,7 @@ Set permissions:
 chmod 600 .megarc
 ```
 
-Edit DATA and SQL as needed::
+Edit DATA and SQL as needed:
 
 ```
 # DATA
