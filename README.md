@@ -1,6 +1,6 @@
 Sync2Mega
 ===========
-Synchronize your files automatically to Mega (like RSync)
+Synchronize your files automatically to Mega.
 
 Requirements
 ------------
