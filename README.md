@@ -28,12 +28,6 @@ Username = <mailuseby@mega.co.nz>
 Password = <megapassword>
 ```
 
-Set permissions:
-
-```
-chmod 600 .megarc
-```
-
 Edit DATA and SQL as needed:
 
 ```
