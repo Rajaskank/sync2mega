@@ -108,7 +108,7 @@ echo "- Liste des archives en local: "
 ls -1sh $LOCALDIR
 
 echo "-> Synchronisation..."
-megasync --reload --local $LOCALDIR --remote $MEGADIR
+megacopy --reload --local $LOCALDIR --remote $MEGADIR
 
 echo "- Liste des archives sur Mega: "
 megals --reload -lh $MEGADIR
