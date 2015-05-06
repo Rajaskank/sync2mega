@@ -98,7 +98,7 @@ echo "-> Suppression des archives de plus de ${NBJOURS} jours en local..."
 find $LOCALDIR -type f -mtime +$NBJOURS -exec rm -vf {} \;
 
 echo "-> Suppression des archives de plus de ${NBJOURS} jours sur Mega..."
-DELETE=`megasync --dryrun --reload --download --local $LOCALDIR --remote $MEGADIR | sed 's/F '$SEDLOCALDIR'/'$SEDMEGADIR'/g'`
+DELETE=`megacopy --dryrun --reload --download --local $LOCALDIR --remote $MEGADIR | sed 's/F '$SEDLOCALDIR'/'$SEDMEGADIR'/g'`
 for i in $DELETE;
 do
 	megarm --reload $i
